@@ -7,27 +7,24 @@
   --nav-font: "Poppins", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+/* Global Colors */
 :root {
-  --background-color: #000000; /* Background color for the entire website, including individual sections */
-  --default-color: #fafafa; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #e3558d; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #1a1a1a; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #fafafa; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --background-color: #000000;
+  --default-color: #fafafa;
+  --heading-color: #ffffff;
+  --accent-color: #e3558d;
+  --surface-color: #1a1a1a;
+  --contrast-color: #fafafa;
 }
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+/* Nav Menu Colors */
 :root {
-  --nav-color: #fafafa; /* The default color of the main navmenu links */
-  --nav-hover-color: #e3558d; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #1a1a1a; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #fafafa; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #e3558d; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #fafafa;
+  --nav-hover-color: #e3558d;
+  --nav-mobile-background-color: #1a1a1a;
+  --nav-dropdown-background-color: #1a1a1a;
+  --nav-dropdown-color: #fafafa;
+  --nav-dropdown-hover-color: #e3558d;
 }
-
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
   --background-color: #1a1a1a;
@@ -53,7 +50,7 @@
 /* Apply top margin only to inner pages */
 body.about-page main,
 body.contact-page main {
-  margin-top: 150px; /* adjust height of your header */
+  margin-top: 150px;
 }
 
 /* Home page stays flush with top */
@@ -61,7 +58,7 @@ body.index-page main {
   margin-top: 0;
 }
 
-/* 🌞 Light Mode overrides */
+/*Light Mode overrides */
 body.light-mode {
   background-color: #fff;
   color: #222;
@@ -913,23 +910,23 @@ section,
   margin-top: 20px;
 }
 .custom-edit-btn {
-  background-color: transparent; /* transparent background */
-  border: 2px solid #ff69b4; /* pink border */
-  color: #ff69b4; /* pink text */
+  background-color: transparent;
+  border: 2px solid #ff69b4;
+  color: #ff69b4;
   font-weight: 500;
-  border-radius: 30px; /* rounded corners */
+  border-radius: 30px;
   padding: 8px 20px;
   transition: all 0.3s ease-in-out;
 }
 
 .custom-edit-btn:hover {
-  background-color: #ff69b4; /* pink background on hover */
-  color: #fff; /* white text on hover */
+  background-color: #ff69b4;
+  color: #fff;
 }
 
 .custom-edit-btn:focus {
   outline: none;
-  box-shadow: 0 0 10px rgba(255, 105, 180, 0.6); /* glowing focus effect */
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
 }
 
 /*--------------------------------------------------------------
@@ -1063,9 +1060,9 @@ section,
 
 .contact-form {
   width: 100%;
-  max-width: 1200px; /* Increased width for wider forms */
+  max-width: 1200px;
   padding: 35px;
-  margin: 30px auto; /* Center form horizontally */
+  margin: 30px auto;
   border-radius: 15px;
   background-color: transparent;
   backdrop-filter: blur(20px);
@@ -1073,23 +1070,18 @@ section,
   box-shadow: 0 0 1px 0 rgba(248, 57, 203, 0.5),
     0 0 0.5px 0.5px rgba(235, 8, 178, 0.336);
   position: relative;
-  transform: translate(-5%, 5%); /* Adjusted to center better */
+  transform: translate(-5%, 5%);
 }
 
 .contact-form .form-control {
   padding: 0.775rem 1.05rem;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.13
-  ); /* Ensure slight transparency for form fields */
+  background-color: rgba(255, 255, 255, 0.13);
   backdrop-filter: blur(10px);
-  color: white; /* Set text color to white */
+  color: white;
 }
 
 .contact-form .form-control::placeholder {
-  color: rgba(255, 255, 255, 0.7); /* Set placeholder text color */
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .contact-form .form-control:focus {
@@ -1099,16 +1091,16 @@ section,
 
 .contact-form .btn {
   background-color: #ff40b9;
-  color: white; /* White text color for contrast */
+  color: white;
   transition: background-color 0.3s ease;
 }
 
 .contact-form .btn:hover {
-  background-color: #ff40b9; /* Darker shade on hover */
+  background-color: #ff40b9;
 }
 
 .contact-form label {
-  color: white; /* White label text */
+  color: white;
 }
 
 .contact-form h1,
@@ -1118,13 +1110,13 @@ section,
 .contact-form h5,
 .contact-form h6,
 .contact-form p {
-  color: white; /* Ensure all headings and paragraph text are white */
+  color: white;
 }
 
 /* Responsive adjustments */
 @media (max-width: 575px) {
   .contact-form {
-    max-width: 100%; /* Better width on smaller screens */
+    max-width: 100%;
     padding: 20px;
     transform: translate(-2%, 5%);
   }
@@ -1140,9 +1132,9 @@ section,
 }
 /* Light mode: form inputs text + placeholder */
 body.light-mode .contact-form .form-control {
-  color: #000 !important; /* input text */
-  background-color: #fff !important; /* ensure white background */
-  border: 1px solid #ccc; /* soft border */
+  color: #000 !important;
+  background-color: #fff !important;
+  border: 1px solid #ccc;
 }
 
 /* Light mode: placeholder text */

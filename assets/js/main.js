@@ -220,27 +220,109 @@
       });
   });
 
-  /**
-   * Editable About Section
-   */
+  // Editable About Section with persistence + save/cancel + keyboard shortcut
   document.addEventListener("DOMContentLoaded", () => {
     const editBtn = document.getElementById("editBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
     const editableContent = document.getElementById("editableContent");
-    if (!editBtn || !editableContent) return;
+    const status = document.getElementById("status");
+    const STORAGE_KEY = "about_section_content_v1";
+
+    if (!editBtn || !editableContent || !status) return;
 
     let isEditing = false;
+    let originalHTML = editableContent.innerHTML;
+
+    // Load saved content if exists
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      editableContent.innerHTML = saved;
+      originalHTML = saved;
+      status.textContent = "Saved";
+    }
+
+    function enterEditMode() {
+      isEditing = true;
+      editableContent.contentEditable = "true";
+      editableContent.focus();
+      editBtn.textContent = "Save";
+      cancelBtn.style.display = "inline-block";
+      status.textContent = "Editing — changes not saved";
+      // place caret at end
+      placeCaretAtEnd(editableContent);
+    }
+
+    function exitEditMode(save = false) {
+      isEditing = false;
+      editableContent.contentEditable = "false";
+      cancelBtn.style.display = "none";
+
+      if (save) {
+        const html = editableContent.innerHTML;
+        localStorage.setItem(STORAGE_KEY, html);
+        originalHTML = html;
+        status.textContent = "Saved";
+      } else {
+        // revert to previous
+        editableContent.innerHTML = originalHTML;
+        status.textContent = "Changes discarded";
+        // short delay then show saved
+        setTimeout(() => (status.textContent = "Saved"), 1200);
+      }
+
+      editBtn.textContent = "Edit";
+    }
 
     editBtn.addEventListener("click", () => {
       if (!isEditing) {
-        editableContent.contentEditable = "true";
-        editableContent.focus();
-        editBtn.textContent = "Save";
+        enterEditMode();
       } else {
-        editableContent.contentEditable = "false";
-        editBtn.textContent = "Edit";
+        // Save action
+        exitEditMode(true);
       }
-      isEditing = !isEditing;
     });
+
+    cancelBtn.addEventListener("click", () => {
+      if (!isEditing) return;
+      exitEditMode(false);
+    });
+
+    // Mark as dirty when user types
+    editableContent.addEventListener("input", () => {
+      if (isEditing) status.textContent = "Editing — changes not saved";
+    });
+
+    // Keyboard shortcut: Ctrl/Cmd + S => save
+    document.addEventListener("keydown", (e) => {
+      const isSave = (e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s";
+      if (isSave && isEditing) {
+        e.preventDefault();
+        exitEditMode(true);
+      }
+    });
+
+    // Utility: place caret at end of an element
+    function placeCaretAtEnd(el) {
+      el.focus();
+      if (
+        typeof window.getSelection !== "undefined" &&
+        typeof document.createRange !== "undefined"
+      ) {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        range.collapse(false);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    }
+
+    // Optional: a method to reset saved content (for debugging)
+    window.resetAboutSection = function () {
+      localStorage.removeItem(STORAGE_KEY);
+      editableContent.innerHTML = originalHTML;
+      status.textContent = "Saved (reset)";
+    };
   });
 
   /**

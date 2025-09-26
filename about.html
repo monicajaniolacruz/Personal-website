@@ -94,13 +94,17 @@
               <img
                 src="assets/img/pics/formalprofile.jpg"
                 class="img-fluid profile-img"
-                alt=""
+                alt="Monica profile"
               />
             </div>
 
             <div class="col-lg-8 content">
               <!-- Editable Content Wrapper -->
-              <div id="editableContent" contenteditable="false">
+              <div
+                id="editableContent"
+                contenteditable="false"
+                aria-label="About content"
+              >
                 <h2>Monica J. Cruz</h2>
                 <br />
                 <p>
@@ -170,8 +174,25 @@
                 </div>
               </div>
 
-              <!-- Edit/Save Button -->
-              <button id="editBtn" class="custom-edit-btn mt-3">Edit</button>
+              <!-- Controls -->
+              <div
+                class="d-flex justify-content-end align-items-center gap-2 mt-3"
+              >
+                <button id="editBtn" class="custom-edit-btn">Edit</button>
+                <button
+                  id="cancelBtn"
+                  class="btn btn-outline-secondary"
+                  style="display: none"
+                >
+                  Cancel
+                </button>
+                <div
+                  id="status"
+                  style="margin-left: 8px; font-size: 0.95rem; color: #666"
+                >
+                  Saved
+                </div>
+              </div>
             </div>
           </div>
         </div>
